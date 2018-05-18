@@ -1,0 +1,69 @@
+var
+	EnteredPassword: string;
+	EnteredUsername: string;
+	MenuItem: string;
+	MenuRunning: boolean;
+	
+begin
+	if GetCurrentPort=80 then
+		begin
+			SetCorrectPort;
+			SetConnected;
+			MenuRunning:=True;
+			Print('Welcome to sample.com', 15);
+			Print('This is just a test server to show developers how to make new missions and servers for the game.', 15);
+			Print('', 15);
+			Wait(700);
+			while MenuRunning=True do
+				begin
+					Print('', 15);
+					Print('Menu:', 15);
+					Print('1) Menu item I', 15);
+					Print('2) Menu item II', 15);
+					Print('3) Disconnect', 15);
+					MenuItem:=Readstring;
+					if MenuItem='1' then
+						Print('This is menu item I', 14);
+					if MenuItem='2' then
+						Print('This is menu item II', 12);
+					if MenuItem='3' then
+						MenuRunning:=False;
+				end;
+			Print('Bye bye...', 9);
+			Disconnect;
+		end;
+	
+    if GetCurrentPort=22 then
+        begin
+            SetCorrectPort;
+            Print('SampleLogin', 15);
+            Print2('Username: ', 15); 
+			EnteredUsername:=ReadString;
+            Print2('Password: ', 15); 
+			EnteredPassword:=ReadString;
+
+	    if (EnteredUsername='root') and (EnteredPassword=GetAdminPass) then
+	   	begin
+		    SetSSHLoggedIn;
+		    SetConnected;
+                    SetCurrentUser(EnteredUsername);
+		    SetAdminLoggedIn;
+                    Print('You are now logged in as: '+EnteredUsername, 12);
+		end
+	    else
+		begin
+            if (EnteredUsername=GetUsername) and (EnteredPassword=GetPassword) then
+                begin
+                    SetSSHLoggedIn;
+                    SetConnected;
+                    SetCurrentUser(EnteredUsername);
+                    Print('You are now logged in as: '+EnteredUsername, 12);
+                end
+            else
+                begin
+                    Disconnect;
+                    Print('Wrong username or password!', 12);
+                end;
+		end;
+        end;
+end.

@@ -1,0 +1,14 @@
+Version 0.2.0 Alpha-02:
+ * The game can now be compiled with Delphi 10.2 (tested 18-05-2018).
+
+
+Version 0.1.0 Alpha-01:
+ * Fixed some miss-spellings.
+ * Worked a bit on the missions (You are able to play from level 0 - 3).
+ * Removed a lot unused stuff.
+ * Changed some things in the objective check code.
+ * Fixed a bug with text in scripts.
+ * The "cat" command is now unable to view binary files.
+ + Added a root password cracker (Currently it's only set to crack plasmite.com's root password).
+ + A new command has been added to show your current mission objective.
+ + Wrote a developer document about how to make your own servers and missions.

@@ -1,0 +1,65 @@
+var
+	EnteredPassword: string;
+	EnteredUsername: string;
+	MenuItem: string;
+	MenuRunning: boolean;
+	
+begin
+	if GetCurrentPort=80 then
+		begin
+			SetCorrectPort;
+			SetConnected;
+			MenuRunning:=True;
+			Print('Welcome to TeamAnubis86 !', 15);
+			Print('', 15);
+			Wait(700);
+			while MenuRunning=True do
+				begin
+					Print('', 15);
+					Print('Menu:', 15);
+					Print('1) Information', 15);
+					Print('2) Access information', 15);
+					Print('3) Disconnect', 15);
+					MenuItem:=Readstring;
+					Print('', 15);
+					if MenuItem='1' then
+						begin
+							Print('.:: TeamAnubis86 ::.', 15);
+							Print('TeamAnubis86 is a malware creating group, founded by "Ponky", "XKiller007", "NitroBoy" and "PunkGirl-010".', 15);
+							Print('Our current project is the Insomnia virus. More info about that can be found in the insomnia_readme.txt file on our fileserver.', 15);
+							Print('We dont have much to say... if you need us, we will find you!', 15);
+						end;
+					if MenuItem='2' then
+						begin
+							Print('To get your hands on our current project: "Insomnia", you must login to our fileserver at port 198.', 15);	
+							Print('The username is: "anonymous", and the password is "insomnia".', 15);
+						end;
+					if MenuItem='3' then
+						MenuRunning:=False;
+				end;
+			Print('Bye bye...', 15);
+			Disconnect;
+		end;
+	
+    if GetCurrentPort=198 then
+        begin
+            SetCorrectPort;
+            Print('fileservd 1.23', 15);
+            Print2('Username: ', 15); 
+			EnteredUsername:=ReadString;
+            Print2('Password: ', 15); 
+			EnteredPassword:=ReadString;
+            if (EnteredUsername=GetUsername) and (EnteredPassword=GetPassword) then
+                begin
+                    SetSSHLoggedIn;
+                    SetConnected;
+                    SetCurrentUser(EnteredUsername);
+                    Print('You are now logged in as: '+GetUsername, 12);
+                end
+            else
+                begin
+                    Disconnect;
+                    Print('Wrong username or password!', 12);
+                end;
+        end;
+end.

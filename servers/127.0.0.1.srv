@@ -1,0 +1,9 @@
+[Info]
+OpenPorts=22
+ListProtected=0
+Username=root
+Password=root
+AdminPass=root
+UploadAble=1
+DeleteAble=1
+PassCrackAble=0

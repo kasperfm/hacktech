@@ -1,0 +1,5 @@
+[Data]
+MissionName=Mission 00 - The new user at plasmite
+Objective=download attachment_155-login_info.txt from 83.246.122.68
+ObjectiveMsg=One of our crackers found a registration email on plasmite, our rival's, mailserver that says they created a new user account for their newest member "y0k0". Unfortunately the attached file was encryted in the email, but we think it still exists unencrypted on their mailserver. Try port scanning mail.plasmite.com and look around. Maybe they got the file there.
+EndMsg=You got the right file! Now open it and see if it's unencrypted.

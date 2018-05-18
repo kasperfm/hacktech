@@ -1,0 +1,25 @@
+begin	
+    if GetCurrentPort=25 then
+        begin
+			SetCorrectPort;
+			SetConnected;
+            Print('PlasMail v0.2 Alpha', 15);
+			Wait(627);
+			Print('You have nothing to do here... bye bye', 15);
+			Disconnect;
+		end;
+
+    if GetCurrentPort=26 then
+        begin
+            SetCorrectPort;
+            Print('PlasMail_FileServer v0.1 Alpha', 15);
+			Print('We are currently testing our own mail server software, so at the moment everyone will be logged in as anonymous.', 15);
+			Print('', 15);
+			Print('Loggin in as anonymous...', 15);
+			Wait(2400);
+			Print('', 15);
+            SetSSHLoggedIn;
+            SetConnected;
+            SetCurrentUser('anonymous');
+         end;
+end.

@@ -1,0 +1,62 @@
+var
+	MenuItem: string;
+	MenuRunning: boolean;
+	ExploitMenuRunning: boolean;
+	
+begin
+	if GetCurrentPort=80 then
+		begin
+			SetCorrectPort;
+			SetConnected;
+			MenuRunning:=True;
+			Print('Welcome to MyExploitDB!', 15);
+			Print('Your favorite exploit database.', 15);
+			Print('', 15);
+			Wait(700);
+			while MenuRunning=True do
+				begin
+					Print('', 15);
+					Print('Main menu:', 7);
+					Print('1) Information', 15);
+					Print('2) Exploits', 15);
+					Print('3) Disconnect', 15);
+					MenuItem:=Readstring;
+					Print('', 15);
+					
+					if MenuItem='1' then
+						begin
+							Print('MyExploitDB', 15);
+							Print('MyExploitDB is your source to the newest exploits available.', 15);
+							Print('Feel free to use the exploits for whatever you want, just remember: Think before you type!', 15);
+						end;
+					if MenuItem='2' then
+						begin
+							ExploitMenuRunning:=True;
+							
+							while ExploitMenurunning=True do
+								begin
+									Print('', 15);
+									Print('Exploit menu:', 7);
+									Print('a) EnoSSH < 1.06 - Password buffer overflow', 15);	
+									Print('x) Back...', 15);
+									MenuItem:=Readstring;
+									Print('', 15);
+									
+									if MenuItem='a' then
+										begin
+											Print('Exploit for EnoSSH < 1.06', 11);
+											Print('It''s possible to gain root access to the ssh server, if you enter a password longer than 128 chars.', 15);
+											Print('This have been fixed in EnoSSH 1.06.', 15);
+										end;
+										
+									if MenuItem='x' then
+										ExploitMenuRunning:=False;
+								end;
+						end;
+					if MenuItem='3' then
+						MenuRunning:=False;
+				end;
+				
+			Disconnect;
+		end;
+end.

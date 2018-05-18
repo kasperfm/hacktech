@@ -1,0 +1,16 @@
+begin
+	if GetCurrentServer='83.246.122.67' then
+		begin
+			Print(':: TeamAnubis86 :: Insomnia ::', 13);
+			Print('Loading virus kernel...', 13);
+			Wait(1563);
+			Print('Loading completed!', 13);
+			Wait(650);
+			Print('Shutting down server... NOW!', 13);
+			Wait(2300);
+			Print('The system has been powered off!', 12);
+			ShutdownServer('83.246.122.67');
+		end
+	else
+		Print('Error: The software is not compatible with this system !', 12);
+end.

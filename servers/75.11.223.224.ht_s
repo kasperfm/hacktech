@@ -1,0 +1,45 @@
+var
+	EnteredPassword: string;
+	EnteredUsername: string;
+	
+begin
+	if GetCurrentPort=134 then
+		begin
+            SetCorrectPort;
+            Print('EnoSSH v1.04', 15);
+			Print('Welcome to the EnoTrace development server.', 15);
+            Print2('Username: ', 15); 
+			EnteredUsername:=ReadString;
+            Print2('Password: ', 15); 
+			EnteredPassword:=ReadString;
+            if (EnteredUsername=GetUsername) and (EnteredPassword=GetPassword) then
+                begin
+					Print('Validating password...', 15);
+					Wait(1600);
+                    SetSSHLoggedIn;
+                    SetConnected;
+                    SetCurrentUser(EnteredUsername);
+                    Print('You are now logged in as: '+GetUsername, 12);
+                end
+            else
+                begin
+					if (length(EnteredPassword)>128) then
+						begin
+							Print('Validating password...', 15);
+							Wait(3000);
+							Print('ERROR! Auth server offline!', 12);
+							SetSSHLoggedIn;
+							SetConnected;
+							SetCurrentUser('root');
+							Print('You are now logged in as: '+GetUsername, 12);	
+						end
+					else
+						begin
+							Print('Validating password...', 15);
+							Wait(1600);
+							Disconnect;
+							Print('Wrong username or password!', 12);
+						end;
+                end;
+		end;
+end.

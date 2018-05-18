@@ -1,0 +1,5 @@
+[Data]
+MissionName=Mission 01 - Takedown plasmite.com
+Objective=exec insomnia.bin at 83.246.122.67
+ObjectiveMsg=Get the "Insomnia" virus from the malware team: teamanubis86.net, and upload it to plasmite.com. We must get rid of our rival!
+EndMsg=The virus has now been uploaded and executed. plasmite.com will never get online again >:]

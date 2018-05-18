@@ -1,0 +1,5 @@
+[Data]
+MissionName=Mission 03 - The source code of EnoTrace
+Objective=exec lala at 1.1.1.1.1
+ObjectiveMsg=Now check it out, maybe there is some usefull information in it. Maybe you can find an IP, a hostname, an email, a port, just something we can use to stop the development of EnoTrace.
+EndMsg=This mission can't be completed !

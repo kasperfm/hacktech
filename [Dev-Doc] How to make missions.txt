@@ -1,0 +1,128 @@
+::   HackTech Developer Document - How to make missions   ::
+::   By KasperFM			    Version 0.2   ::
+------------------------------------------------------------
+
+
+NOTE: This game was made in 2007, and only made it to the alpha state!
+      After this point, the game were not developed any further.
+      Take a look at https://hacktechonline.com if you are into hacker sims.
+
+
+
+This document will tell about how to make missions for HackTech.
+Before you start reading, it will be a good idea to know some basic
+pascal/delphi syntax, and know how ini files work.
+
+
+
+		<< Mission files >>
+It's pretty simple. All mission files is "just" an INI file.
+Mission files should have the file-extension ".ht_m"
+
+
+A mission file could look like this:
+
+[Data]
+MissionName=Mission 00 - Test missions
+Objective=exec lol.bin at 123.123.123.123
+ObjectiveMsg=Execute "lol.bin" at 123.123.123.123 to complete the mission.
+EndMsg=Congratulations you completed the mission!
+
+
+There are different kind of objectives/goals you can use in the 
+"Objective" variable.
+The available objectives are:
+- downlaod filename.bin from 123.123.123.123
+- upload filename.bin to 123.123.123.123
+- exec filename.bin at 123.123.123.123
+- takedown 123.123.123.123
+
+Ofcourse you ned to make a serverfile for 123.123.123.123 before
+you can do anything with it.
+
+
+
+		<< Server files >>
+A serverfile is also an INI file, with the file-extension ".srv".
+
+A serverfile could look like this:
+
+[Info]
+OpenPorts=22 80
+ListProtected=1
+Username=n00bster
+Password=pass123
+AdminPass=rootpass123
+UploadAble=0
+DeleteAble=0
+PassCrackAble=0
+
+
+I'll explain the things for you:
+OpenPorts	- Open ports on the server (seperated by a space)
+ListProtected	- If set to 1, the player are unable to use the "ls" command.
+Username	- The normal user account on the server (other than root/admin).
+Password	- Password for the normal user account.
+AdminPass	- The root/admin password for the server.
+UploadAble	- Set to 1 if the normal user has upload rights.
+DeleteAble	- Set to 1 if the normal user has rights to delete files.
+PassCrackAble	- Set to 1 if the player are able to crack the root password.
+
+If you want your server to store some files, are make the user able to upload files
+to it, you should make a folder called "123.123.123.123_files".
+(If you need a sample, take a look at 123.123.123.123.srv)
+
+
+
+		<< The list.ht_d file >>
+One of the most important files is the list.ht_d file.
+In that file all the IPs and hostnames are linked together.
+Check it out, it's self explaining.
+
+
+
+		<< Server scripts >>
+This is the funny part of making a server :D (and tricky!!)
+Every server need to have a server script file. It got the file extension: ".ht_S".
+The script syntax HackTech uses is pascal/delphi syntax, so it's not that hard to
+work with.
+
+There is many functions and procedures you can use.
+
+Here is the list:
+procedure Print(Text: string; Color: Byte) // Print text to the screen. (Check the color table)
+procedure Print2(Text: string; Color: Byte)// Print text to the screen on the same line.
+procedure Disconnect;			   // Disconnect from the server.
+function ReadString: string;		   // Read text from the keyboard into a string.
+procedure Wait(timer: integer);		   // Wait # miliseconds.
+function GetDeleteAble: string;		   // If DeleteAble is 1, return 'true' else 'false'.
+function GetCurrentServer: string;	   // Get the ip of the connected server.
+function GetUsername: string;		   // Get the defined username from the .srv file.
+function GetPassword: string;		   // Get the defined password from the .srv file.
+function GetCurrentUser: string;	   // Get the username of the CurrentUser.
+function GetConnected: boolean;		   // Check if you are connected.
+function GetCurrentPort: integer;	   // Get the number of the current port.
+function GetAdminLoggedIn: boolean;	   // Check if the admin account is logged in.
+procedure SetConnected;			   // Change the status to connected.
+procedure SetCorrectPort;		   // Tell the game that you are connected to a valid port.
+procedure SetSSHLoggedIn;		   // Tell the game that you are logged in using SSH.
+procedure SetCurrentUser(user: string);	   // Set the current username.
+procedure SetAdminLoggedIn;		   // Tell the game that an admin is logged in.
+function GetAdminPass: string;		   // Get the root password from the .srv file.
+
+[Color table for the print commands]
+  DarkGray     = 8;          
+  LightBlue    = 9;
+  LightGreen   = 10;
+  LightCyan    = 11;
+  LightRed     = 12;
+  LightMagenta = 13;
+  Yellow       = 14;
+  White        = 15;
+
+You can take a look at the included sample. It got the ip address: 123.123.123.123
+So don't check out the original game files from the start, since that may spoil the game!
+
+
+Note: If there is an error in your script file the game will tell you so, but
+not where it is!!

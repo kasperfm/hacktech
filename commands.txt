@@ -1,0 +1,19 @@
+List of available commands
+____________________________________________________________________________
+
+exit..................Exit the game.
+about.................About the game.
+clear.................Clear the console.
+commands..............Show this help text.
+objective.............Show the current mission objective.
+bookmarks.............Show the bookmark menu.
+connect #host# #port#.Connect to a server at the specified port.
+disconnect............Disconnect from the current server.
+./#file#..............Run a executeable file.
+ls....................List files on the current server.
+pscan #host#..........Scan for open ports at the selected server.
+crack #host#..........Try to crack the root password on the selected server.
+rm #file#.............Delete the specified file.
+cat #file#............Show the content of a file.
+wget #file#...........Get a file from the server you are connected to.
+upload #file#.........Upload a file from your home dir to the current server.

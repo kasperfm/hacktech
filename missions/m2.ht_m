@@ -1,0 +1,5 @@
+[Data]
+MissionName=Mission 02 - EnoSoft's tracing system.
+Objective=download connect.pas from 75.11.223.224
+ObjectiveMsg=Now that our rival plasmite.com is down, we can continue our work. There has been some rumors about EnoSoft are making a new tracing system for Internet Service Providers called "EnoTrace", so they can trace connections directly to your home address extremely fast! And ofcourse we don't want that. BigBrother will never get us! Their primary website is enosoft.com, but I doubt they keep their goodies there. Search around for some source code for their new project. Maybe you can find some usefull information.
+EndMsg=You did the job good! You got a good piece of source code from EnoTrace.

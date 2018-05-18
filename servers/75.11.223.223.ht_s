@@ -1,0 +1,65 @@
+var
+	MenuItem: string;
+	MenuRunning: boolean;
+
+begin
+	if GetCurrentPort=80 then
+		begin
+			SetCorrectPort;
+			SetConnected;
+			MenuRunning:=True;
+			Print('Welcome to EnoSoft', 15);
+			Print('', 15);
+			Wait(700);
+			while MenuRunning=True do
+				begin
+					Print('', 15);
+					Print('Menu:', 15);
+					Print('1) Company information', 15);
+					Print('2) Products', 15);
+					Print('3) Current projects', 15);
+					Print('4) Contact', 15);
+					Print('5) Disconnect', 15);
+					MenuItem:=Readstring;
+					Print('', 15);					
+
+					if MenuItem='1' then
+						begin
+							Print('Information:', 7);
+							Print('EnoSoft is one of the leading security-soft companies in the world.', 15);
+							Print('Our vision is to make the world a more secure place to live.', 15);
+						end;
+					if MenuItem='2' then
+						begin
+							Print('EnoLogger:', 7);	
+							Print('EnoLogger will log every event on the system, and upload it to a central database every minute, so you always can keep an eye on your clients.', 15);
+						end;
+					if MenuItem='3' then
+						begin
+							Print('Our current project is EnoTrace. We can''t give out any further information about the project, because it''s a job for the goverment.', 15);
+						end;
+					if MenuItem='4' then
+						begin
+							Print('Contact:', 7);
+							Print('Telephone: 73 44 00 44 22', 15);
+							Print('Email: contact@mail.enosoft.com', 15);
+						end;
+					if MenuItem='5' then
+						MenuRunning:=False;
+				end;
+			Disconnect;
+		end;
+		
+	if GetCurrentPort=64 then
+		begin
+			SetCorrectPort;
+			SetConnected;
+			Print('Connecting...', 15);
+			Wait(1500);
+			Print('', 15);
+			Print('We are currently upgrading our development server with new hardware.', 15);
+			Print('Project EnoTrace temp-development server can be found at: trace.enodev.net, port 134', 15);
+			Print('', 15);
+			Disconnect;
+		end;
+end.
